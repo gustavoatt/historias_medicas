@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<title>
+			{% block title %}
+			Historias Médicas
+			{% endblock title %}
+		</title>
+		
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css" />
+	</head>
+	
+	<body>
+		<div class="navbar navbar-static-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand">Medhistoria</a>
+					
+					<div class="nav-collapse">
+						<ul class="nav" id="main-menu-left">
+							<li><a href="#"><i class="icon-plus"> </i> Nueva Historia</a></li>
+							<li><a href="#"><i class="icon-user"> </i> Ver Pacientes</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content" class="container canvas">
+			<div class="page-header">
+				{% block header %}
+				<h1>Medhistoria</h1>
+				{% endblock header %}
+			</div>
+			
+			{% block content %}
+			{% endblock %}
+		</div>
+  </body>
+</html>
