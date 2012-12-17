@@ -1,0 +1,33 @@
+{% extends "base.djhtml" %}
+{% load html_tags %}
+{% comment %}
+  Receives:
+  
+  form: the form object
+{% endcomment %}
+
+{% block header %}
+<h1>Autentificación</h1>
+{% endblock header %}
+
+{% block content %}
+
+<form class="form-horizontal" method="post" action="{% url login %}">
+	{% csrf_token %}
+	
+	<div class="control-group">
+		<label class="control-label">Nombre de usuario</label>
+		<div class="controls">{{ form.username|add_placeholder:"Nombre de usuario" }}</div>
+	</div>
+	
+	<div class="control-group">
+    <label class="control-label">Clave de acceso</label>
+    <div class="controls">{{ form.password|add_placeholder:"Clave de acceso" }}</div>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls"><button class="btn btn-primary" type="submit">Entrar</button></div>
+	</div>
+</form>
+
+{% endblock content %}

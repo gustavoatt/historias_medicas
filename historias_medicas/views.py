@@ -5,5 +5,5 @@ from django.template.context import RequestContext
 # 
 #===============================================================================
 def index(request):
-	return render_to_response('index.djhtml', {}, 
+	return render_to_response('login.djhtml', {}, 
 						context_instance=RequestContext(request))
