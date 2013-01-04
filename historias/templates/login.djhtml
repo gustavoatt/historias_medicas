@@ -15,18 +15,39 @@
 <form class="form-horizontal" method="post" action="{% url login %}">
 	{% csrf_token %}
 	
+	{{ form.non_field_errors }}
+	
+	{% if not form.username.errors %}
 	<div class="control-group">
+	{% else %}
+	<div class="control-group error">
+    {% endif %}
 		<label class="control-label">Nombre de usuario</label>
-		<div class="controls">{{ form.username|add_placeholder:"Nombre de usuario" }}</div>
+		<div class="controls">
+            {{ form.username|add_placeholder:"Nombre de usuario" }}
+            {% for error in form.username.errors %}
+                <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+		</div>
 	</div>
 	
+	{% if not form.password.errors %}
 	<div class="control-group">
-    <label class="control-label">Clave de acceso</label>
-    <div class="controls">{{ form.password|add_placeholder:"Clave de acceso" }}</div>
+	{% else %}
+	<div class="control-group error">
+	{% endif %}
+        <label class="control-label">Clave de acceso</label>
+        <div class="controls">
+        	{{ form.password|add_placeholder:"Clave de acceso" }}
+            {% for error in form.password.errors %}
+                <span class="help-inline">{{ error }}</span>
+            {% endfor %}
+        </div>
 	</div>
 	
 	<div class="control-group">
 		<div class="controls"><button class="btn btn-primary" type="submit">Entrar</button></div>
+		<input type="hidden" name="next" value="{{ next }}" />
 	</div>
 </form>
 
