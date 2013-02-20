@@ -1,0 +1,34 @@
+{% extends "base.djhtml" %}
+{% load html_tags %}
+{% comment %}
+  Receives:
+  
+  form: the form object
+{% endcomment %}
+
+{% block header %}
+<h1>Nuevo paciente</h1>
+{% endblock header %}
+
+{% block content %}
+
+<form class="form-horizontal" method="post" action="">
+	{% csrf_token %}
+	
+	{% for field in form %}
+	   <div class="control-group">
+	       <label class="control-label">{{ field.label }}</label>
+	       <div class="controls">
+	   	       {{ field|add_placeholder:field.label }}
+	   	       {% for error in field.errors %}
+                    <span class="help-inline">{{ error }}</span>
+               {% endfor %}	
+	   	   </div>
+	   </div>
+	{% endfor %}
+	
+	<div class="control-group">
+		<div class="controls"><button class="btn btn-primary" type="submit">Crear</button></div>
+	</div>
+</form>
+{% endblock %}
