@@ -2,7 +2,7 @@
 <html lang="es">
 	<head>
 		<meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<title>
 			{% block title %}
@@ -17,12 +17,13 @@
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand">Medhistoria</a>
+					<a class="brand" href={% url home %}>Medhistoria</a>
 					
 					<div class="nav-collapse">
 						<ul class="nav" id="main-menu-left">
-							<li><a href="#"><i class="icon-plus"> </i> Nueva Historia</a></li>
-							<li><a href="#"><i class="icon-user"> </i> Ver Pacientes</a></li>
+							<li><a href="#"><i class="icon-user"> </i>Pacientes</a></li>
+							<li><a href={% url nueva_historia %}><i class="icon-edit"> </i> Nueva Historia</a></li>
+							<li><a href={% url nueva_persona %}><i class="icon-plus"> </i>Nuevo Paciente</a></li>
 						</ul>
 					</div>
 				</div>
@@ -32,11 +33,14 @@
 		<div id="content" class="container canvas">
 			<div class="page-header">
 				{% block header %}
-				<h1>Medhistoria</h1>
+				<h1>Bienvenido</h1>
 				{% endblock header %}
 			</div>
 			
 			{% block content %}
+				<p>
+					Éste sitio fue diseñado para el manejo cómodo y eficiente de una base de datos de historias médicas.
+				</p>
 			{% endblock %}
 		</div>
   </body>

@@ -1,1 +1,10 @@
-{% extends "base.djhtml" %}
+{% extends "base_form.djhtml" %}
+{% comment %}
+  Receives:
+  
+  form: the form object
+{% endcomment %}
+
+{% block header %}
+<h1>Nueva historia</h1>
+{% endblock header %}
