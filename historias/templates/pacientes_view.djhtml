@@ -1,0 +1,31 @@
+{% extends "base.djhtml" %}
+{% comment %}
+	Receives:
+		pacientes: a list of all the patients stored in DB
+{% endcomment %}
+
+{% block content %}
+	<div class="row">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Cédula</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Historias</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for p in pacientes  %}
+					<tr>
+						<td>{{ p.cedula }}</td>
+						<td>{{ p.nombre }}</td>
+						<td>{{ p.apellido }}</td>
+						<td><i class="icon-edit"> </i></td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock content %}

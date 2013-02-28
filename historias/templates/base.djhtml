@@ -21,9 +21,9 @@
 					
 					<div class="nav-collapse">
 						<ul class="nav" id="main-menu-left">
-							<li><a href="#"><i class="icon-user"> </i>Pacientes</a></li>
+							<li><a href={% url lista_pacientes %}><i class="icon-user"> </i> Pacientes</a></li>
 							<li><a href={% url nueva_historia %}><i class="icon-edit"> </i> Nueva Historia</a></li>
-							<li><a href={% url nueva_persona %}><i class="icon-plus"> </i>Nuevo Paciente</a></li>
+							<li><a href={% url nueva_persona %}><i class="icon-plus"> </i> Nuevo Paciente</a></li>
 						</ul>
 					</div>
 				</div>
@@ -43,5 +43,10 @@
 				</p>
 			{% endblock %}
 		</div>
+
+		{% block scripts %}
+			<script src="http://code.jquery.com/jquery.js"></script>
+			<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+		{% endblock scripts %}
   </body>
 </html>

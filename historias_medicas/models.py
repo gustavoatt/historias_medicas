@@ -9,6 +9,11 @@ class Persona(models.Model):
 	telefono_casa		= models.CharField(max_length=20, blank=True)
 	telefono_celular	= models.CharField(max_length=20, blank=True)
 
+	def __unicode__(self):
+		return "({}) {} {}".format(self.cedula, 
+		                          self.apellido, 
+		                          self.nombre)
+
 class Historia(models.Model):
 	persona			= models.ForeignKey('Persona', unique=True, blank=False, null=True)
 	fecha 			= models.DateField(auto_now_add=True)

@@ -1,13 +1,34 @@
-from django.forms import ModelForm
+import datetime
 
-from historias_medicas.models import Persona, Historia
+import django.forms
+import django.forms.extras as extras
 
-class PersonaForm(ModelForm):
+from historias_medicas import models
+import widgets
+
+class PersonaForm(django.forms.ModelForm):
 	class Meta:
-		model 	= Persona
+		model 	= models.Persona
 		fields 	= ('cedula', 'nombre', 'apellido', 'fecha_nacimiento', 
-							'telefono_casa', 'telefono_celular', 'direccion')
+		           'telefono_casa', 'telefono_celular', 'direccion')
+		widgets = {
+			'fecha_nacimiento': 
+				extras.SelectDateWidget(years=range(1900, datetime.date.today().year + 1),
+				                        attrs={
+				                        	'class': 'span1'
+				                        })
+		}
 
-class HistoriaForm(ModelForm):
+class HistoriaForm(django.forms.ModelForm):
 	class Meta:
-		model = Historia
+		model = models.Historia
+		widgets = {
+			'peso': widgets.AppendedInput("kg",
+			                              attrs={
+			                              	'placeholder': "Peso",
+			                              }),
+			'talla': widgets.AppendedInput("cm", 
+			                               attrs={
+			                               	'placeholder': "Talla",
+			                               })
+		}
