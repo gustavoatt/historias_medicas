@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 	    name='nueva_historia'
 	),
 	# Views that show information
-	url(r'^pacientes', views.PacienteListView.as_view(),
+	url(r'^pacientes', django_auth.decorators.login_required(views.PacienteListView.as_view()),
 	    name='lista_pacientes'),
 	
 )

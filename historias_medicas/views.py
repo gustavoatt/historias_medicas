@@ -34,7 +34,7 @@ class PacienteListView(django_list_views.ListView):
 #===============================================================================
 # Adds a new patient
 #===============================================================================
-@login_required(login_url='/login')
+@login_required
 def crear_persona(request, **kwargs):
 	if request.method == 'POST':
 		form = forms.PersonaForm(request.POST)
@@ -54,7 +54,7 @@ def crear_persona(request, **kwargs):
 #===============================================================================
 #
 #===============================================================================
-@login_required(login_url='/login')
+@login_required
 def crear_historia(request, **kwargs):
 	if request.method == 'POST':
 		form = forms.HistoriaForm(request.POST)
