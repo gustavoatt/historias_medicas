@@ -14,15 +14,20 @@ class Persona(models.Model):
 		                          self.apellido, 
 		                          self.nombre)
 
+	@models.permalink
+	def get_absolute_url(self):
+		return ('historias_de_paciente', [self.id])
+
 class Historia(models.Model):
 	persona			= models.ForeignKey('Persona', 
-	                              unique=True, 
 	                              blank=False, 
 	                              null=True,
 	                              related_name='historias')
-	fecha 			= models.DateField(auto_now_add=True)
+	fecha 			= models.DateField(unique=True, 
+	                            auto_now_add=True)
 	motivo 			= models.TextField()
-	peso  			= models.IntegerField(blank=True)
+	peso  			= models.DecimalField(blank=True,
+	                               max_digits=5, decimal_places=2)
 	talla			= models.IntegerField(blank=True)
 	tension			= models.CharField(max_length=15)
 	pulso			= models.IntegerField()

@@ -1,7 +1,7 @@
 import models
 
 import django.views.generic.list  as django_list_views
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
@@ -75,7 +75,7 @@ def crear_historia(request, **kwargs):
 		form = forms.HistoriaForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/thanks')
+			return redirect(form.instance.persona)
 	else:
 		form = forms.HistoriaForm()
 

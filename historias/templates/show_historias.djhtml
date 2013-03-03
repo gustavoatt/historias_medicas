@@ -1,0 +1,53 @@
+{% extends "base.djhtml" %}
+{% comment %}
+	Receives:
+		persona: The person from which histories are being shown
+		historias: All the historias from persona
+{% endcomment %}
+
+{% block title %}
+	Historias de {{ persona.nombre }} {{ persona.apellido }}
+{% endblock title %}
+
+{% block header %}
+	<h1>Historias: {{ persona.nombre }} {{ persona.apellido }}</h1>
+{% endblock header %}
+
+{% block content %}
+	{% for h in historias %}
+		<h3>{{ h.fecha }}</h3>
+		<div class="row">
+			<div class="span4">
+				<h5>Motivo</h5>
+				{{ h.motivo }}
+			</div>
+
+			<div class="span4">
+				<h5>Peso</h5>
+				{{ h.peso }}
+			</div>
+
+			<div class="span4">
+				<h5>Talla</h5>
+				{{ h.talla }}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span4">
+				<h5>Tensión</h5>
+				{{ h.tension }}
+			</div>
+		
+			<div class="span4">
+				<h5>Diágnostico</h5>
+				{{ h.diagnostico }}
+			</div>
+
+			<div class="span4">
+				<h5>Tratamiento</h5>
+				{{ h.tratamiento }}
+			</div>
+		</div>
+	{% endfor %}	
+{% endblock content %}
