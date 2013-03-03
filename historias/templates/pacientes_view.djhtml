@@ -22,7 +22,7 @@
 						<td>{{ p.cedula }}</td>
 						<td>{{ p.nombre }}</td>
 						<td>{{ p.apellido }}</td>
-						<td><i class="icon-edit"> </i></td>
+						<td><a href={% url historias_de_paciente p.id %} class="btn-link">{{ p.historias.count }}</a></td>
 					</tr>
 				{% endfor %}
 			</tbody>

@@ -20,5 +20,8 @@ urlpatterns = patterns('',
 	# Views that show information
 	url(r'^pacientes', django_auth.decorators.login_required(views.PacienteListView.as_view()),
 	    name='lista_pacientes'),
+
+	url(r'^historias/(\d+)/', django_auth.decorators.login_required(views.HistoriaListView.as_view()),
+	    name='historias_de_paciente'),
 	
 )

@@ -1,7 +1,7 @@
 import models
 
 import django.views.generic.list  as django_list_views
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 from django.http import HttpResponseRedirect
 from django.contrib.auth.views import login
@@ -30,6 +30,21 @@ class PacienteListView(django_list_views.ListView):
 	model = models.Persona
 	template_name = 'pacientes_view.djhtml'
 	context_object_name = 'pacientes'
+
+class HistoriaListView(django_list_views.ListView):
+	template_name = 'show_historias.djhtml'
+	context_object_name = 'historias'
+
+	def get_queryset(self):
+		self.persona = get_object_or_404(models.Persona, id=self.args[0])
+		return models.Historia.objects.filter(persona=self.persona)
+
+	def get_context_data(self, **kwargs):
+		context = super(HistoriaListView, self).get_context_data(**kwargs)
+		context['persona'] = self.persona
+
+		return context
+		
 	
 #===============================================================================
 # Adds a new patient
@@ -59,6 +74,7 @@ def crear_historia(request, **kwargs):
 	if request.method == 'POST':
 		form = forms.HistoriaForm(request.POST)
 		if form.is_valid():
+			form.save()
 			return HttpResponseRedirect('/thanks')
 	else:
 		form = forms.HistoriaForm()

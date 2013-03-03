@@ -15,7 +15,11 @@ class Persona(models.Model):
 		                          self.nombre)
 
 class Historia(models.Model):
-	persona			= models.ForeignKey('Persona', unique=True, blank=False, null=True)
+	persona			= models.ForeignKey('Persona', 
+	                              unique=True, 
+	                              blank=False, 
+	                              null=True,
+	                              related_name='historias')
 	fecha 			= models.DateField(auto_now_add=True)
 	motivo 			= models.TextField()
 	peso  			= models.IntegerField(blank=True)
