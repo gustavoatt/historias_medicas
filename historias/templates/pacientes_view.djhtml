@@ -4,6 +4,10 @@
 		pacientes: a list of all the patients stored in DB
 {% endcomment %}
 
+{% block header %}
+	<h1>Pacientes</h1>
+{% endblock header %}
+
 {% block content %}
 	<div class="row">
 		<table class="table table-hover">
