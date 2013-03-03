@@ -23,7 +23,7 @@ class Historia(models.Model):
 	                              blank=False, 
 	                              null=True,
 	                              related_name='historias')
-	fecha 			= models.DateField(unique=True, 
+	fecha 			= models.DateTimeField(unique=True, 
 	                            auto_now_add=True)
 	motivo 			= models.TextField()
 	peso  			= models.DecimalField(blank=True,

@@ -11,6 +11,9 @@ class Migration(SchemaMigration):
         # Removing unique constraint on 'Historia', fields ['persona']
         db.delete_unique('historias_medicas_historia', ['persona_id'])
 
+
+        # Changing field 'Historia.fecha'
+        db.alter_column('historias_medicas_historia', 'fecha', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, unique=True))
         # Adding unique constraint on 'Historia', fields ['fecha']
         db.create_unique('historias_medicas_historia', ['fecha'])
 
@@ -26,6 +29,9 @@ class Migration(SchemaMigration):
         db.create_unique('historias_medicas_historia', ['persona_id'])
 
 
+        # Changing field 'Historia.fecha'
+        db.alter_column('historias_medicas_historia', 'fecha', self.gf('django.db.models.fields.DateField')(auto_now_add=True))
+
         # Changing field 'Historia.peso'
         db.alter_column('historias_medicas_historia', 'peso', self.gf('django.db.models.fields.IntegerField')())
 
@@ -33,7 +39,7 @@ class Migration(SchemaMigration):
         'historias_medicas.historia': {
             'Meta': {'object_name': 'Historia'},
             'diagnostico': ('django.db.models.fields.TextField', [], {}),
-            'fecha': ('django.db.models.fields.DateField', [], {'auto_now_add': 'True', 'unique': 'True', 'blank': 'True'}),
+            'fecha': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'unique': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'motivo': ('django.db.models.fields.TextField', [], {}),
             'pendiente': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
