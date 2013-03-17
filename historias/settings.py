@@ -125,9 +125,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-		'south',
-		'crispy_forms',
-		'historias_medicas',
+	'south',
+	'crispy_forms',
+	'historias_medicas',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -160,6 +160,7 @@ LOGGING = {
 }
 
 LOGIN_URL = '/login'
+CRISPY_FAIL_SILENTLY = not DEBUG
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url

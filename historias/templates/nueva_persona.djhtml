@@ -1,4 +1,5 @@
-{% extends "base_form.djhtml" %}
+{% extends "base.djhtml" %}
+{% load crispy_forms_tags %}
 {% comment %}
   Receives:
   
@@ -8,3 +9,7 @@
 {% block header %}
 <h1>Nuevo paciente</h1>
 {% endblock header %}
+
+{% block content %}
+	{% crispy form %}
+{% endblock content %}

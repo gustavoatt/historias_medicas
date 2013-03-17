@@ -3,8 +3,14 @@ import datetime
 import django.forms
 import django.forms.extras as extras
 
-from historias_medicas import models
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Submit, HTML
+from crispy_forms.bootstrap import FormActions, AppendedText
+
 import widgets
+
+from historias_medicas import models
+
 
 class PersonaForm(django.forms.ModelForm):
 	class Meta:
@@ -19,6 +25,22 @@ class PersonaForm(django.forms.ModelForm):
 				                        })
 		}
 
+	def __init__(self, *args, **kwargs):
+		super(PersonaForm, self).__init__(*args, **kwargs)
+		
+		# Django-crispy-forms helper so that they are rendered correctly
+		self.helper = FormHelper(self)
+		self.helper.form_class = 'form-horizontal'
+		self.helper.form_tag = True
+		self.helper.form_id = 'nueva_persona_form'
+		self.helper.form_action = 'nueva_persona'
+
+		self.helper.form_show_errors = True
+		self.helper.error_text_inline = False
+
+		self.helper.add_input(Submit('crear', 'Crear'))
+
+
 class HistoriaForm(django.forms.ModelForm):
 	class Meta:
 		model = models.Historia
@@ -32,3 +54,17 @@ class HistoriaForm(django.forms.ModelForm):
 			                               	'placeholder': "Talla",
 			                               })
 		}
+
+	def __init__(self, *args, **kwargs):
+		super(HistoriaForm, self).__init__(*args, **kwargs)
+
+		self.helper = FormHelper(self)
+		self.helper.form_class = 'form-horizontal'
+		self.helper.form_tag = True
+		self.helper.form_id = 'nueva_historia_form'
+		self.helper.form_action = 'nueva_historia'
+
+		self.helper.form_show_errors = True
+		self.helper.error_text_inline = False
+
+		self.helper.add_input(Submit('crear', 'Crear'))

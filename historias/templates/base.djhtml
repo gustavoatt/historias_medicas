@@ -10,7 +10,8 @@
 			{% endblock title %}
 		</title>
 		
-		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css">
 	</head>
 	
 	<body>

@@ -26,9 +26,8 @@ class Historia(models.Model):
 	fecha 			= models.DateTimeField(unique=True, 
 	                            auto_now_add=True)
 	motivo 			= models.TextField()
-	peso  			= models.DecimalField(blank=True,
-	                               max_digits=5, decimal_places=2)
-	talla			= models.IntegerField(blank=True)
+	peso  			= models.DecimalField(max_digits=5, decimal_places=2)
+	talla			= models.IntegerField()
 	tension			= models.CharField(max_length=15)
 	pulso			= models.IntegerField()
 	diagnostico 	= models.TextField()
