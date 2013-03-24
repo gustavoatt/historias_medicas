@@ -4,10 +4,8 @@ import django.forms
 import django.forms.extras as extras
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, Submit, HTML
-from crispy_forms.bootstrap import FormActions, AppendedText
-
-import widgets
+from crispy_forms.layout import Submit
+from crispy_forms.bootstrap import AppendedText
 
 from historias_medicas import models
 
@@ -44,16 +42,6 @@ class PersonaForm(django.forms.ModelForm):
 class HistoriaForm(django.forms.ModelForm):
 	class Meta:
 		model = models.Historia
-		widgets = {
-			'peso': widgets.AppendedInput("kg",
-			                              attrs={
-			                              	'placeholder': "Peso",
-			                              }),
-			'talla': widgets.AppendedInput("cm", 
-			                               attrs={
-			                               	'placeholder': "Talla",
-			                               })
-		}
 
 	def __init__(self, *args, **kwargs):
 		super(HistoriaForm, self).__init__(*args, **kwargs)
@@ -66,5 +54,6 @@ class HistoriaForm(django.forms.ModelForm):
 
 		self.helper.form_show_errors = True
 		self.helper.error_text_inline = False
-
 		self.helper.add_input(Submit('crear', 'Crear'))
+		self.helper['peso'].wrap(AppendedText, "peso", "kg")
+		self.helper['talla'].wrap(AppendedText, "talla", "m")
