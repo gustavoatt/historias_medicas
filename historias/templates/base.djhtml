@@ -18,13 +18,13 @@
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href={% url home %}>Medhistoria</a>
+					<a class="brand" href={% url 'home' %}>Medhistoria</a>
 					
 					<div class="nav-collapse">
 						<ul class="nav" id="main-menu-left">
-							<li><a href={% url lista_pacientes %}><i class="icon-user"> </i> Pacientes</a></li>
-							<li><a href={% url nueva_historia %}><i class="icon-edit"> </i> Nueva Historia</a></li>
-							<li><a href={% url nueva_persona %}><i class="icon-plus"> </i> Nuevo Paciente</a></li>
+							<li><a href={% url 'lista_pacientes' %}><i class="icon-user"> </i> Pacientes</a></li>
+							<li><a href={% url 'nueva_historia' %}><i class="icon-edit"> </i> Nueva Historia</a></li>
+							<li><a href={% url 'nueva_persona' %}><i class="icon-plus"> </i> Nuevo Paciente</a></li>
 						</ul>
 					</div>
 				</div>
